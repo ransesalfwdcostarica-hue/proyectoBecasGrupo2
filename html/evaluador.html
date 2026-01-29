@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Evaluador</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Solicitudes Pendientes de Revisión</h1>
+        
+        <div class="evaluador-layout">
+            <aside class="sidebar-list card">
+                <h3>Postulantes</h3>
+                <ul id="lista-pendientes">
+                    </ul>
+            </aside>
+
+            <section class="main-eval card">
+                <div id="detalle-postulante">
+                    <p>Selecciona un postulante para ver sus datos.</p>
+                </div>
+
+                <form id="form-evaluacion" class="form-grid" hidden>
+                    <h3>Criterios de Evaluación</h3>
+                    <div class="input-group">
+                        <label>Económico (0-40)</label>
+                        <input type="number" id="score-econ" min="0" max="40" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Académico (0-30)</label>
+                        <input type="number" id="score-acad" min="0" max="30" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Social (0-30)</label>
+                        <input type="number" id="score-soc" min="0" max="30" required>
+                    </div>
+                    
+                    <div class="total-score">
+                        Total: <span id="puntos-totales">0</span> / 100
+                    </div>
+
+                    <textarea id="obs-evaluador" placeholder="Observaciones de la decisión..."></textarea>
+                    
+                    <div class="actions">
+                        <button type="submit" name="status" value="Aprobada" class="btn-success">Aprobar</button>
+                        <button type="submit" name="status" value="Rechazada" class="btn-danger">Rechazar</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+    <script src="js/evaluador.js" type="module"></script>
+</body>
+</html>

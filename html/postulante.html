@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Portal de Becas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="user-header">
+        <h1>Bienvenido, <span id="user-name">Usuario</span></h1>
+        <button id="logout-btn">Cerrar Sesión</button>
+    </header>
+
+    <main class="container">
+        <section id="disponibles">
+            <h2>Becas Abiertas</h2>
+            <div id="grid-becas" class="grid-container">
+                </div>
+        </section>
+
+        <hr>
+
+        <section id="mi-historial">
+            <h2>Mis Postulaciones</h2>
+            <div class="card">
+                <table id="tabla-mis-becas">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Beca</th>
+                            <th>Estado</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historial-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="modal-postular">
+        <form id="form-postulacion">
+            <h2>Formulario de Postulación</h2>
+            <fieldset>
+                <legend>Datos Académicos</legend>
+                <input type="text" id="nivel-edu" placeholder="Nivel Educativo" required>
+                <input type="number" id="promedio" placeholder="Promedio Académico" step="0.1" required>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Situación Socioeconómica</legend>
+                <input type="number" id="ingresos" placeholder="Ingresos Mensuales" required>
+                <textarea id="motivo" placeholder="¿Por qué necesitas esta beca?" required></textarea>
+            </fieldset>
+            
+            <div class="modal-actions">
+                <button type="button" onclick="this.closest('dialog').close()">Cerrar</button>
+                <button type="submit" class="btn-success">Enviar Postulación</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="js/postulante.js" type="module"></script>
+</body>
+</html>
