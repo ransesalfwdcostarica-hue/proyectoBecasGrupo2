@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Panel de Evaluador</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/globals.css">
+    <link rel="stylesheet" href="../css/evaluador.css">
 </head>
+
 <body>
+    <header class="main-header">
+        <nav class="nav-left">
+            <ul>
+                <li><a href="index.html" class="nav-btn">Inicio</a></li>
+                <li><a href="postulante.html" class="nav-btn">Optar por una beca</a></li>
+                <li><a href="evaluador.html" class="nav-btn">Entrar como Evaluador</a></li>
+                <li><a href="admin.html" class="nav-btn">Entrar como Administrador</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="container">
         <h1>Solicitudes Pendientes de Revisión</h1>
-        
+
         <div class="evaluador-layout">
             <aside class="sidebar-list card">
                 <h3>Postulantes</h3>
                 <ul id="lista-pendientes">
-                    </ul>
+                </ul>
             </aside>
 
             <section class="main-eval card">
@@ -35,13 +48,13 @@
                         <label>Social (0-30)</label>
                         <input type="number" id="score-soc" min="0" max="30" required>
                     </div>
-                    
+
                     <div class="total-score">
                         Total: <span id="puntos-totales">0</span> / 100
                     </div>
 
                     <textarea id="obs-evaluador" placeholder="Observaciones de la decisión..."></textarea>
-                    
+
                     <div class="actions">
                         <button type="submit" name="status" value="Aprobada" class="btn-success">Aprobar</button>
                         <button type="submit" name="status" value="Rechazada" class="btn-danger">Rechazar</button>
@@ -50,6 +63,8 @@
             </section>
         </div>
     </main>
-    <script src="js/evaluador.js" type="module"></script>
+    <script src="../js/navigation.js" type="module"></script>
+    <script src="../js/evaluador.js" type="module"></script>
 </body>
+
 </html>

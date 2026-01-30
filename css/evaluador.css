@@ -1,0 +1,105 @@
+/* ============================================
+   PANEL DE EVALUADOR - ESTILOS
+   ============================================ */
+
+.evaluador-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.sidebar-list {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.sidebar-list h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+}
+
+#lista-pendientes {
+    list-style: none;
+}
+
+#lista-pendientes li {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-100);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+#lista-pendientes li:hover {
+    background: var(--gray-50);
+}
+
+#lista-pendientes li.active {
+    background: var(--primary-light);
+    color: var(--white);
+}
+
+.main-eval {
+    min-height: 60vh;
+}
+
+.form-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-200);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+}
+
+.total-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    color: var(--primary-blue);
+}
+
+#obs-evaluador {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    resize: none;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-success {
+    background: var(--success-green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background: var(--error-red);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}

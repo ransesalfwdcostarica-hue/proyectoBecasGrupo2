@@ -1,63 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso - Sistema de Gestión de Becas</title>
+    <title>Desarrollo Humano - Portal de Becas</title>
     <link rel="stylesheet" href="../css/index.css">
 </head>
-<body>
-    
-    <header>
-        <section id="login-section" class="card">
-            <h1>Bienvenido al Sistema de Becas</h1>
-            <p>Institución Gubernamental de Fomento</p>
-        </header>
-            
-        <main class="auth-container">
-        <form id="login-form">
-            <h2>Iniciar Sesión</h2>
-            <div class="form-group">
-                <label for="login-email">Correo Electrónico</label>
-                <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Contraseña</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit" class="btn-primary">Ingresar</button>
-                <p>¿No tienes cuenta? <a href="#" id="show-register">Regístrate aquí</a></p>
-            </section>
-            </form>
 
-        <section id="register-section" class="card" hidden>
-            <h2>Registro de Usuario</h2>
-            <form id="register-form">
-                <div class="form-group">
-                    <label for="reg-nombre">Nombre Completo</label>
-                    <input type="text" id="reg-nombre" required>
+<body>
+
+    <header class="main-header">
+        <nav class="nav-left">
+            <ul>
+                <li>
+                    <a href="index.html" class="nav-btn">Inicio</a>
+                </li>
+                <li>
+                    <a href="postulante.html" class="nav-btn">Optar por una beca</a>
+                </li>
+                <li>
+                    <a href="evaluador.html" class="nav-btn">Entrar como Evaluador</a>
+                </li>
+                <li>
+                    <a href="admin.html" class="nav-btn">Entrar como Administrador</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <section class="hero-section card">
+            <h2>Transformando Futuros a través de la Educación</h2>
+            <p class="hero-text">Bienvenido al Portal Oficial de Becas Gubernamentales. Nuestro compromiso es facilitar
+                el acceso a una educación de calidad para todos los ciudadanos talentosos, proporcionando el apoyo
+                necesario para alcanzar sus metas académicas y profesionales.</p>
+        </section>
+
+        <section class="process-section card">
+            <h3>¿Cómo funcionan las becas?</h3>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Registro</h4>
+                    <p>Cree su cuenta como postulante para acceder al catálogo completo de becas disponibles.</p>
                 </div>
-                <div class="form-group">
-                    <label for="reg-email">Correo Electrónico</label>
-                    <input type="email" id="reg-email" required>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Postulación</h4>
+                    <p>Complete los formularios y adjunte la documentación requerida para la beca de su interés.</p>
                 </div>
-                <div class="form-group">
-                    <label for="reg-role">Registrarme como:</label>
-                    <select id="reg-role">
-                        <option value="postulante">Postulante</option>
-                        <option value="evaluador">Evaluador</option>
-                        <option value="admin">Administrador (Solo desarrollo)</option>
-                    </select>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Evaluación</h4>
+                    <p>Nuestro equipo de expertos revisará su perfil basándose en méritos académicos y necesidad
+                        socioeconómica.</p>
                 </div>
-                <div class="form-group">
-                    <label for="reg-pass">Contraseña</label>
-                    <input type="password" id="reg-pass" required>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Resultados</h4>
+                    <p>Reciba la notificación oficial de adjudicación y comience su viaje académico con nuestro
+                        respaldo.</p>
                 </div>
-                <button type="submit" class="btn-success">Crear Cuenta</button>
-            </form>
-            <button class="btn-link" id="show-login">Volver al Login</button>
+            </div>
+        </section>
+
+        <section class="benefits-section card">
+            <h3>Beneficios Generales</h3>
+            <ul class="benefits-list">
+                <li>
+                    <strong>Apoyo Económico:</strong> Cobertura de matrícula, mensualidades y materiales de estudio.
+                </li>
+                <li>
+                    <strong>Asesoría Académica:</strong> Acompañamiento personalizado para asegurar su éxito educativo.
+                </li>
+                <li>
+                    <strong>Red de Contactos:</strong> Acceso a ferias de empleo, talleres y una comunidad global de
+                    becados.
+                </li>
+                <li>
+                    <strong>Flexibilidad:</strong> Opciones para estudios nacionales e internacionales en diversas
+                    disciplinas.
+                </li>
+            </ul>
         </section>
     </main>
-    <script src="js/auth.js" type="module"></script>
+    <script src="../js/navigation.js" type="module"></script>
 </body>
+
 </html>
