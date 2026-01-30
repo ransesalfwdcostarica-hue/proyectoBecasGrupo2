@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Admin</title>
+</head>
+<body>
+    <div class="navbar">
+        <span>ADMINISTRADOR</span>
+        <button onclick="sessionStorage.clear(); window.location.href='../index.html'">Cerrar Sesión</button>
+    </div>
+    <div class="main-container">
+        <div class="card">
+            <h2>Publicar Nueva Beca</h2>
+            <form id="fBeca">
+                <label>Nombre de la Beca</label>
+                <input type="text" id="bn" required>
+                <label>Requisitos</label>
+                <textarea id="br" required></textarea>
+                <button type="submit" class="btn-primary">Publicar</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('fBeca').onsubmit = (e) => {
+            e.preventDefault();
+            const becas = JSON.parse(localStorage.getItem('becas') || '[]');
+            becas.push({ id: Date.now(), nombre: document.getElementById('bn').value, requisitos: document.getElementById('br').value });
+            localStorage.setItem('becas', JSON.stringify(becas));
+            alert("Beca publicada");
+            location.reload();
+        }
+    </script>
+    <script src="../js/main.js"></script>
+<script>
+    // Usamos la función de verificar para proteger la página
+    const user = Sesion.verificar('ADMIN'); // O 'POSTULANTE', etc.
+    
+    // Para cerrar sesión ahora solo llamas a:
+    // Sesion.salir();
+</script>
+</body>
+</html>

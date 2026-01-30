@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Evaluador</title>
+</head>
+<body>
+    <div class="navbar">
+        <span>EVALUADOR</span>
+        <button onclick="sessionStorage.clear(); window.location.href='../index.html'">Cerrar Sesión</button>
+    </div>
+    <div class="main-container">
+        <h2>Solicitudes por Calificar</h2>
+        <div id="listaEval"></div>
+    </div>
+    <script>
+        const posts = JSON.parse(localStorage.getItem('postulaciones') || '[]');
+        document.getElementById('listaEval').innerHTML = posts.filter(p => p.estado === 'Pendiente').map(p => `
+            <div class="card">
+                <h3>Aspirante: ${p.userName}</h3>
+                <p>Beca: ${p.becaNombre}</p>
+                <input type="number" id="e${p.id}" placeholder="Económico (40)">
+                <input type="number" id="a${p.id}" placeholder="Académico (30)">
+                <input type="number" id="s${p.id}" placeholder="Social (30)">
+                <button onclick="calificar(${p.id})" class="btn-primary">Enviar Nota</button>
+            </div>
+        `).join('');
+
+        function calificar(id) {
+            const e = +document.getElementById('e'+id).value;
+            const a = +document.getElementById('a'+id).value;
+            const s = +document.getElementById('s'+id).value;
+            const total = e + a + s;
+
+            const idx = posts.findIndex(x => x.id === id);
+            posts[idx].puntos = total;
+            posts[idx].estado = total >= 70 ? 'APROBADA' : 'RECHAZADA';
+            
+            localStorage.setItem('postulaciones', JSON.stringify(posts));
+            alert("Evaluación finalizada");
+            location.reload();
+        }
+    </script>
+</body>
+</html>
