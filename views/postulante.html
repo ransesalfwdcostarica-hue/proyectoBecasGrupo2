@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Postulante</title>
+</head>
+<body>
+    <div class="navbar">
+        <span>POSTULANTE</span>
+        <button onclick="sessionStorage.clear(); window.location.href='../index.html'">Cerrar Sesión</button>
+    </div>
+    <div class="main-container">
+        <h2>Becas Disponibles</h2>
+        <div id="gridBecas"></div>
+        
+        <h2>Mis Postulaciones</h2>
+        <div class="card">
+            <table id="tHistorial">
+                <thead><tr><th>Beca</th><th>Estado</th><th>Puntos</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const user = JSON.parse(sessionStorage.getItem('activeUser'));
+        const becas = JSON.parse(localStorage.getItem('becas') || '[]');
+        const posts = JSON.parse(localStorage.getItem('postulaciones') || '[]');
+
+        // Mostrar Becas
+        document.getElementById('gridBecas').innerHTML = becas.map(b => `
+            <div class="card">
+                <h3>${b.nombre}</h3>
+                <p>${b.requisitos}</p>
+                <button onclick="aplicar(${b.id}, '${b.nombre}')" class="btn-primary">Postularme</button>
+            </div>
+        `).join('');
+
+        function aplicar(id, nombre) {
+            posts.push({ id: Date.now(), userEmail: user.email, userName: user.nombre, becaNombre: nombre, estado: 'Pendiente', puntos: 0 });
+            localStorage.setItem('postulaciones', JSON.stringify(posts));
+            alert("Postulación enviada");
+            location.reload();
+        }
+
+        // Historial
+        document.querySelector('#tHistorial tbody').innerHTML = posts.filter(p => p.userEmail === user.email).map(p => `
+            <tr><td>${p.becaNombre}</td><td>${p.estado}</td><td>${p.puntos}/100</td></tr>
+        `).join('');
+    </script>
+</body>
+</html>

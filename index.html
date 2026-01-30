@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SGB Elite | Acceso</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <div class="auth-card">
+        <h1 style="text-align:center; color: var(--primary);">🏛️ SGB Elite</h1>
+        
+        <div id="login-box">
+            <h2>Iniciar Sesión</h2>
+            <form id="formLogin">
+                <label>Email</label>
+                <input type="email" id="l-email" required>
+                <label>Contraseña</label>
+                <input type="password" id="l-pass" required>
+                <button type="submit" class="btn-primary">Entrar</button>
+            </form>
+            <p style="text-align:center;">¿No tienes cuenta? <button onclick="toggle()" style="border:none; background:none; color:var(--secondary); cursor:pointer; font-weight:bold;">Regístrate</button></p>
+        </div>
+
+        <div id="reg-box" class="hidden">
+            <h2>Registro Nuevo</h2>
+            <form id="formReg">
+                <label>Nombre Completo</label>
+                <input type="text" id="r-name" required>
+                <label>Email</label>
+                <input type="email" id="r-email" required>
+                <label>Contraseña</label>
+                <input type="password" id="r-pass" required>
+                <label>Rol</label>
+                <select id="r-rol">
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="POSTULANTE">POSTULANTE</option>
+                    <option value="EVALUADOR">EVALUADOR</option>
+                </select>
+                <button type="submit" class="btn-primary">Crear Cuenta</button>
+            </form>
+            <p style="text-align:center;">¿Ya tienes cuenta? <button onclick="toggle()" style="border:none; background:none; color:var(--secondary); cursor:pointer; font-weight:bold;">Inicia Sesión</button></p>
+        </div>
+    </div>
+
+    <script>
+        // Función para que el botón de "Regístrate" funcione
+        function toggle() {
+            document.getElementById('login-box').classList.toggle('hidden');
+            document.getElementById('reg-box').classList.toggle('hidden');
+        }
+
+        // Lógica de Registro
+        document.getElementById('formReg').onsubmit = (e) => {
+            e.preventDefault();
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.push({
+                nombre: document.getElementById('r-name').value,
+                email: document.getElementById('r-email').value,
+                pass: document.getElementById('r-pass').value,
+                rol: document.getElementById('r-rol').value
+            });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert("Cuenta creada con éxito");
+            toggle();
+        };
+
+        // Lógica de Login
+        document.getElementById('formLogin').onsubmit = (e) => {
+            e.preventDefault();
+            const email = document.getElementById('l-email').value;
+            const pass = document.getElementById('l-pass').value;
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            const user = users.find(u => u.email === email && u.pass === pass);
+            if(user) {
+                sessionStorage.setItem('activeUser', JSON.stringify(user));
+                window.location.href = `views/${user.rol.toLowerCase()}.html`;
+            } else {
+                alert("Datos incorrectos");
+            }
+        };
+    </script>
+    <script src="js/main.js"></script>
+<script>
+    // Aquí solo dejas la lógica específica del login que usa las funciones de main.js
+    function toggle() {
+        document.getElementById('login-box').classList.toggle('hidden');
+        document.getElementById('reg-box').classList.toggle('hidden');
+    }
+    // ... resto del código que ya tienes ...
+</script>
+</body>
+</html>
